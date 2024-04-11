@@ -33,11 +33,11 @@ export default function Home() {
     <div className="flex mt-20 items-center justify-center flex-col">
       <div
         className={cn(
-          "flex items-center justify-center flex-col",
+          "flex mt-20 items-center justify-center flex-col",
           headingFont.className
         )}
       >
-        <h1 className="text-3xl md:text-6xl text-center text-neutral-800 mb-6">
+        <h1 className="text-3xl mt-20 md:text-6xl text-center text-neutral-800 mb-6">
           Hvað áttu til?📦
         </h1>
         <div className="text-3xl md:text-5xl bg-gradient-to-r from-red-800 to-red-400 text-white px-4 p-2 rounded-md w-fit">
