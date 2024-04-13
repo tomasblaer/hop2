@@ -9,12 +9,12 @@ export default function Header() {
             <Logo />
             <div className="space-x-4 md:block md:w-auto flex items-center justify-between w-full">
                 <Button size="sm" asChild>
-                    <Link href="/sign-in">
+                    <Link href="/login">
                     Innskráning
                     </Link>
                 </Button>
                 <Button className="hover:opacity-85 transition bg-gradient-to-r from-red-800 to-rose-600" size="sm" asChild>
-                    <Link href="/sign-up">
+                    <Link href="/register">
                     Nýskráning
                     </Link>
                 </Button>
