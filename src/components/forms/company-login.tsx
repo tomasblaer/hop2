@@ -38,24 +38,24 @@ export default function CompanyLogin() {
   };
 
   return (
-    <Card className={cn("h-fit my-auto")}>
+    <Card className={cn("h-fit my-auto bg-transparent")}>
       <CardHeader>
-        <CardTitle>Skrá Inn</CardTitle>
-        <CardDescription>
+        <CardTitle className="text-white">Skrá Inn</CardTitle>
+        <CardDescription className="text-white">
           Skráðu þig inn
         </CardDescription>
         <CardContent>
           <div className="grid w-full items-center gap-4">
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="username">Notandanafn</Label>
+              <Label className="text-white" htmlFor="username">Notandanafn</Label>
               <Input id="username" placeholder="Notandanafn" onInput={(e) => setUsername(e.currentTarget.value)}/>
             </div>
             <div className="flex flex-col space-y-1.5">
-              <Label htmlFor="password">Lykilorð</Label>
-              <Input type="password" id="password" placeholder="Lykilorð" onInput={(e) => setPassword(e.currentTarget.value)}/>
+              <Label className="text-white" htmlFor="password">Lykilorð</Label>
+              <Input id="password" placeholder="Lykilorð" onInput={(e) => setPassword(e.currentTarget.value)}/>
             </div>
             <div className="flex">
-              <Button type="submit" onClick={(e) => login()}>Skrá inn</Button>
+              <Button className="bg-gradient-to-r from-red-900 to-rose-700" type="submit" onClick={(e) => login()}>Skrá inn</Button>
             </div>
           </div>
         </CardContent>
