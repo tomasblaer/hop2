@@ -1,8 +1,6 @@
 import CompanyLogin from "@/components/forms/company-login";
-import { setToken } from "../actions";
 
-
-export default async function Register() {
+export default async function Login() {
 
   return (
     <main className="flex w-screen h-screen justify-center">
