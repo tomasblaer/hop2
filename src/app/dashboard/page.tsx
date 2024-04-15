@@ -1,41 +1,56 @@
 'use client'
 
+
 import { useEffect, useState } from "react"
 import { getToken } from "../actions";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import SidePanel from "./_components/sidepanel";
+import ItemCard from "./_components/itemcard";
+import { itemType } from "@/app/types";
 
-type itemType = {
-  id: number;
-  name: string;
-  price: number;
-  imageId: string;
-  companyId: number;
-}
 
 export default function Dashboard() {
-  const [itemTypes, setItemTypes] = useState<itemType[]>([]);
 
+  const [itemtypes, setItemtype] = useState<itemType[]>([]);
   useEffect(() => {
     async function fetchDashboard() {
       const token = await getToken();
       console.log(token);
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/itemType`, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token!.value}`,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token!.value}`,
         },
       });
       const data = await res.json();
-      setItemTypes(data);
+      console.log(data);
+      setItemtype(data);
     }
     fetchDashboard();
   }, []);
 
   return (
-    <main className="flex w-screen h-screen justify-center flex-col">
-      <h1>Dashboard</h1>
-      <div>
+    <div>
+      {itemtypes.map((itemtype) => (
+        <div key={itemtype.id} className="group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200">
+        <Link href={`/itemtype/${itemtype.id}`}>
+          <Image
+            src={`${process.env.NEXT_PUBLIC_API_URL}/itemType${itemtype.imageId}`}
+            width={500}
+            height={300}
+            className="sm:rounded-t-lg group-hover:opacity-70 transition duration-200 ease-in"
+            alt={itemtype.name}
+          ></Image>
+          <div className="p-2">
+            <h2 className="text-lg font-bold truncate">{itemtype.name}</h2>
+            <p className="line-clamp-2 text-md">{itemtype.price}</p>
+          </div>
+        </Link>
       </div>
-    </main>
-  )
+      ))}
+    </div>
+  );
 }

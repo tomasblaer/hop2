@@ -5,6 +5,7 @@ import Header from "@/components/nav/header";
 export default async function Register() {
   return (
     <>
+      
       <Header />
       <main className="flex w-screen h-max justify-center">
         <CompanyRegistry />
