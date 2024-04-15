@@ -2,22 +2,14 @@
 
 import { useEffect, useState } from "react"
 import { getToken } from "../actions";
-
-type itemType = {
-  id: number;
-  name: string;
-  price: number;
-  imageId: string;
-  companyId: number;
-}
+import { itemType } from "@/lib/types";
 
 export default function Dashboard() {
   const [itemTypes, setItemTypes] = useState<itemType[]>([]);
 
   useEffect(() => {
-    async function fetchDashboard() {
+    async function fetchItemTypes() {
       const token = await getToken();
-      console.log(token);
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/itemType`, {
         method: 'GET',
         headers: {
@@ -26,9 +18,10 @@ export default function Dashboard() {
         },
       });
       const data = await res.json();
+      console.log(data);
       setItemTypes(data);
     }
-    fetchDashboard();
+    fetchItemTypes();
   }, []);
 
   return (
