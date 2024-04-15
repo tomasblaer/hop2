@@ -8,12 +8,14 @@ import { cn } from "@/lib/utils";
 import { redirect } from "next/navigation";
 import { setToken } from "@/app/actions";
 import { useRouter } from 'next/navigation'
+import { useToast } from "../ui/use-toast";
 
 
 export default function CompanyLogin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const router = useRouter();
+  const { toast } = useToast();
 
   async function login() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
@@ -24,7 +26,13 @@ export default function CompanyLogin() {
       body: JSON.stringify({ username, password }),
     });
     const data = await res.json();
-    (data.token);
+    if (!res.ok) {
+      toast({
+        title: 'Inskráning mistókst',
+        description: 'Notandanafn eða lykilorð er rangt',
+      })
+      return;
+    }
     setToken(data.token);
     router.push('/dashboard');
   };
@@ -44,7 +52,7 @@ export default function CompanyLogin() {
             </div>
             <div className="flex flex-col space-y-1.5">
               <Label htmlFor="password">Lykilorð</Label>
-              <Input id="password" placeholder="Lykilorð" onInput={(e) => setPassword(e.currentTarget.value)}/>
+              <Input type="password" id="password" placeholder="Lykilorð" onInput={(e) => setPassword(e.currentTarget.value)}/>
             </div>
             <div className="flex">
               <Button type="submit" onClick={(e) => login()}>Skrá inn</Button>
