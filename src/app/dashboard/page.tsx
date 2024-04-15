@@ -1,5 +1,3 @@
-'use client'
-
 import { WavyBackground } from "@/components/ui/wavy-background";
 import ItemCard from "./_components/itemcard";
 
