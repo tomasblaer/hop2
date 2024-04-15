@@ -1,4 +1,3 @@
-import { ComponentProps } from "react";
 import Image from "next/image";
 
 export function Box() {

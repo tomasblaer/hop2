@@ -1,6 +1,7 @@
 
 
 
+import { WavyBackground } from "@/components/ui/wavy-background";
 import SidePanel from "./_components/sidepanel";
 
 
@@ -13,10 +14,10 @@ export default function DashboardLayout({
 }>) {
   return (
     <>
-      <div className="h-screen bg-slate-200">
-        <SidePanel />
-        {children}
-      </div>
+        <div className="h-screen bg-black">
+          <SidePanel />
+          {children}
+        </div>
     </>
   );
 }
