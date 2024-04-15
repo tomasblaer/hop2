@@ -35,22 +35,22 @@ export default function Home() {
                 headingFont.className
               )}
             >
-              <h1 className="hover:translate-y-2 transition duration-300 text-3xl mt-20 mb-4 md:text-6xl text-center bg-gradient-to-r from-red-700 to-rose-500 text-white p-4 rounded-md w-fit">
+              <h1 className="hover:scale-110 transition duration-300 text-3xl mt-20 mb-4 md:text-6xl text-center bg-gradient-to-r from-red-700 to-rose-500 text-white p-4 rounded-md w-fit">
                 Hvað áttu til?📦
               </h1>
-              <div className="hover:translate-y-2 transition duration-300 text-3xl md:text-5xl bg-gradient-to-r from-red-700 to-rose-500 text-white px-4 p-2 rounded-md w-fit">
+              <div className="hover:scale-110 transition duration-300 text-3xl md:text-5xl bg-gradient-to-r from-red-700 to-rose-500 text-white px-4 p-2 rounded-md w-fit">
                 Passaðu upp á þitt!
               </div>
             </div>
             <div
               className={cn(
-                "hover:translate-y-2 transition duration-300 text-sm md:text-xl bg-gradient-to-r from-red-700 to-rose-500 text-white mt-4 max-w-xs md:max-w-2xl text-center mx-auto p-2 rounded-md w-fit",
+                "hover:scale-110 transition duration-300 text-sm md:text-xl bg-gradient-to-r from-red-700 to-rose-500 text-white mt-4 max-w-xs md:max-w-2xl text-center mx-auto p-2 rounded-md w-fit",
                 textFont.className
               )}
             >
               Eina leiðin til að halda utan um lagerinn. Varningur hjálpar þér að halda utan um birgðarstöðuna, sölurnar og viðskpitin.
             </div>
-            <Button className="hover:opacity-85 hover:translate-y-2 transition duration-300 mt-6 bg-gradient-to-r from-red-900 to-rose-700" size="lg" asChild>
+            <Button className="hover:opacity-85 hover:scale-110 transition duration-300 mt-6 bg-gradient-to-r from-red-900 to-rose-700" size="lg" asChild>
               <Link href="/sign-up">Prófa núna!</Link>
             </Button>
           </div>
