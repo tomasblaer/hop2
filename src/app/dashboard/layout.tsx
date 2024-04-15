@@ -13,8 +13,10 @@ export default function DashboardLayout({
 }>) {
   return (
     <>
-      <SidePanel />
-      {children}
+      <div className="h-screen bg-slate-200">
+        <SidePanel />
+        {children}
+      </div>
     </>
   );
 }

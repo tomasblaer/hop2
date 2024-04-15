@@ -7,8 +7,8 @@ export function Box() {
         <Image
             src="/icons_svg/box.svg"
             alt="Box"
-            width={28}
-            height={28}
+            width={26}
+            height={26}
         />
     </div>
   );
