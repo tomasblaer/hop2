@@ -1,6 +1,8 @@
+'use server'
 import { getToken } from "@/app/actions";
-import ItemTypeCard from "../../_components/itemtype-card";
-import { itemTypeImage } from "@/lib/types";
+import ItemTypeCard from "../../../../components/forms/itemtype-edit-card";
+import { itemTypeImage, itemTypeUpdate } from "@/lib/types";
+import { revalidatePath } from "next/cache";
 
 async function fetchItemTypeInfo(itemTypeId: string): Promise<itemTypeImage> {
   const token = await getToken();
@@ -31,6 +33,24 @@ async function fetchItemImage(data: itemTypeImage): Promise<void> {
   data.imageUrl = image;
 }
 
+async function updateItemType(id: string, data: itemTypeUpdate) {
+  'use server'
+  const token = await getToken();
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/itemType/${id}`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token!.value}`,
+      },
+      body: JSON.stringify(data),
+    }
+  );
+  const updatedData = await res.json();
+  return updatedData;
+}
+
 export default async function ItemTypePage({
   params,
 }: {
@@ -43,8 +63,8 @@ export default async function ItemTypePage({
   }
 
   return (
-    <div className="m-4">
-      <ItemTypeCard data={data} />
+    <div className="m-4 w-full grid grid-cols-3">
+      <ItemTypeCard data={data} updateItemTypeFunction={updateItemType} />
     </div>
   )
 }

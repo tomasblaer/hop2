@@ -43,9 +43,7 @@ export default async function Dashboard() {
   return (
       <div>
         <div>
-          <Suspense fallback={<Loading />}>
-            <ItemCard data={itemData} />
-          </Suspense>
+          <ItemCard data={itemData} />
         </div>
       </div>
   );
