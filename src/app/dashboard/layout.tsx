@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }>) {
   return (
     <>
-        <div className="h-screen flex">
+        <div className="h-screen flex bg-black">
           <SidePanel />
           {children}
         </div>
