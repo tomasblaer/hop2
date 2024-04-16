@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import localFont from "next/font/local";

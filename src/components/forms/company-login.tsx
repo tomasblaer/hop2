@@ -5,7 +5,6 @@ import { Label } from "@/components/ui/label";
 import { Button } from "../ui/button";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import { redirect } from "next/navigation";
 import { setToken } from "@/app/actions";
 import { useRouter } from 'next/navigation'
 import { useToast } from "../ui/use-toast";

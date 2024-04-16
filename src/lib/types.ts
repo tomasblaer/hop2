@@ -16,3 +16,7 @@ export type itemType = {
   imageId: string;
   companyId: number;
 }
+
+export interface itemTypeImage extends itemType {
+  imageUrl: string;
+}

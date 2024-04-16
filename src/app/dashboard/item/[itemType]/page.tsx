@@ -1,7 +1,8 @@
 import { getToken } from "@/app/actions";
-import { itemType } from "@/lib/types";
+import ItemTypeCard from "../../_components/itemtype-card";
+import { itemTypeImage } from "@/lib/types";
 
-async function fetchItemTypeInfo(itemTypeId: string) {
+async function fetchItemTypeInfo(itemTypeId: string): Promise<itemTypeImage> {
   const token = await getToken();
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/itemType/${itemTypeId}`,
@@ -14,7 +15,20 @@ async function fetchItemTypeInfo(itemTypeId: string) {
     }
   );
   const data = await res.json();
-  console.log(data);
+  return data;
+}
+
+async function fetchItemImage(data: itemTypeImage): Promise<void> {
+  const token = await getToken();
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/itemType/image/${data.id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token!.value}`,
+    },
+  });
+  const image = await res.json();
+  data.imageUrl = image;
 }
 
 export default async function ItemTypePage({
@@ -24,11 +38,13 @@ export default async function ItemTypePage({
 }) {
 
   const data = await fetchItemTypeInfo(params.itemType);
-
+  if (data.imageId) {
+    await fetchItemImage(data);
+  }
 
   return (
-    <div>
-      {/* Todo */}
+    <div className="m-4">
+      <ItemTypeCard data={data} />
     </div>
   )
 }
