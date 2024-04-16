@@ -12,11 +12,11 @@ export default function ItemCard({ data }: { data: itemTypeImage[]}) {
   }, [data]);
 
   return (
-    <div className="grid grid-cols-5">
+    <div className="grid grid-cols-5 bg-slate-100">
       {itemtypes?.map((itemtype) => (
         <div
           key={itemtype.id}
-          className="group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200 h-96 "
+          className="group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200 h-96 bg-slate-50 "
         >
           <Link href={`/dashboard/item/${itemtype.id}`} className="flex flex-col justify-end h-full">
             <Image

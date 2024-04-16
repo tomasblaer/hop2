@@ -26,6 +26,12 @@ export type itemTypeUpdate = {
   price?: number;
 };
 
+export type itemTypeCreate = {
+  name: string;
+  price: number;
+  image: File | undefined;
+};
+
 export type item = {
   id: number;
   location: string | null;

@@ -1,10 +1,9 @@
 "use server";
-import ItemCard from "./_components/itemcard";
-import { Suspense } from "react";
-import Loading from "./loading";
+import ItemCard from "../../components/dashboard/itemcard";
 import { getToken } from "../actions";
 import { itemTypeImage } from "@/lib/types";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import ItemPanel from "@/components/dashboard/item-panel";
 
 async function fetchDashboard(): Promise<itemTypeImage[]> {
   const token = await getToken();
@@ -44,8 +43,11 @@ export default async function Dashboard() {
   }
 
   return (
-    <ScrollArea className="h-screen">
-      <ItemCard data={itemData} />
-    </ScrollArea>
+    <div className="flex flex-col justify-between w-full">
+      <ItemPanel showButton={true}/>
+      <ScrollArea className="h-5/6 flex-1">
+        <ItemCard data={itemData} />
+      </ScrollArea>
+    </div>
   );
 }

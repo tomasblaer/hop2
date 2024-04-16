@@ -1,4 +1,4 @@
-import SidePanel from "./_components/sidepanel";
+import SidePanel from "../../components/dashboard/sidepanel";
 
 export default function DashboardLayout({
   children,

@@ -25,7 +25,7 @@ export default async function SidePanel() {
 
   return (
     <>
-      <div className="pb-12 h- bg-gradient-to-r from-red-700 to-rose-500 rounded-r-3xl">
+      <div className="pb-12 h- bg-gradient-to-r from-red-700 to-rose-500">
         <div className="space-y-4 py-4">
           <div className="py-2">
             <h2 className="mb-4 px-5 text-2xl text-slate-100 font-extrabold">

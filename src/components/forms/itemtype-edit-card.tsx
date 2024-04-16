@@ -46,13 +46,16 @@ const formSchema = z.object({
 type ItemTypeCardProps = {
   data: itemTypeImage;
   updateItemTypeFunction: (id: string, data: itemTypeUpdate) => void;
+  deleteItemTypeFunction: (id: string) => void;
 };
 
 export default function ItemTypeCard({
   data,
   updateItemTypeFunction,
+  deleteItemTypeFunction,
 }: ItemTypeCardProps) {
   const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [atDeleteConfirm, setAtDeleteConfirm] = useState(false);
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -95,20 +98,24 @@ export default function ItemTypeCard({
     [data.id, data.name, data.price, router, updateItemTypeFunction, updateItemTypeImage]
   );
 
+  const onDelete = useCallback((id: string) => {
+    deleteItemTypeFunction(id);
+    setEditDialogOpen(false);
+    router.push('/dashboard');
+  }, [deleteItemTypeFunction, router]);
+
   return (
     <div
       key={data.id}
-      className="cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 transition-shadow duration-200 h-1/2 w-full"
+      className="cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 transition-shadow duration-200 h-fit w-full bg-slate-50"
     >
-      {data?.imageUrl ? (
-        <Image
-          src={data?.imageUrl}
-          width={500}
-          height={300}
-          className="sm:rounded-t-lg h-5/6 object-cover w-full"
-          alt={data.name}
-        ></Image>
-      ) : null}
+      <Image
+        src={data?.imageUrl ?? '/logo.svg'}
+        width={500}
+        height={300}
+        className="sm:rounded-t-lg h-96 w-auto mx-auto object-scale-down scale-90 hover:scale-95 transition duration-200 ease-in"
+        alt={data.name}
+      ></Image>
       <div className="flex justify-between">
         <div className="p-2">
           <h2 className="text-lg font-bold truncate">{data.name}</h2>
@@ -189,8 +196,8 @@ export default function ItemTypeCard({
                   <Button type="submit" variant="secondary" className="mx-2">
                     Vista breytingar
                   </Button>
-                  <Button variant="destructive" className="mx-2">
-                    Eyða vöru
+                  <Button variant="destructive" className="mx-2" onClick={() => atDeleteConfirm ? onDelete(data.id) : setAtDeleteConfirm(true)}>
+                    {atDeleteConfirm ? "Ert þú viss?" : "Eyða vöru"}
                   </Button>
                 </DialogDescription>
               </form>
