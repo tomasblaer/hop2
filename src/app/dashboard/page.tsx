@@ -1,11 +1,12 @@
-'use server'
+"use server";
 import ItemCard from "./_components/itemcard";
 import { Suspense } from "react";
 import Loading from "./loading";
 import { getToken } from "../actions";
-import { Separator } from "@/components/ui/separator";
+import { itemTypeImage } from "@/lib/types";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
-async function fetchDashboard() {
+async function fetchDashboard(): Promise<itemTypeImage[]> {
   const token = await getToken();
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/itemType`, {
     method: "GET",
@@ -18,33 +19,33 @@ async function fetchDashboard() {
   return data;
 }
 
-async function fetchCompanyName() {
+async function fetchItemImage(data: itemTypeImage): Promise<void> {
   const token = await getToken();
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/company:id`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token!.value}`,
-    },
-  });
-  const data = await res.json();
-  return data;
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/itemType/image/${data.id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token!.value}`,
+      },
+    }
+  );
+  const image = await res.json();
+  data.imageUrl = image;
 }
 
 export default async function Dashboard() {
-
-  const companyName = await fetchCompanyName();
-  const itemData = await fetchDashboard();
+  let itemData = await fetchDashboard();
+  for (let i = 0; i < itemData.length; i++) {
+    if (itemData[i].imageId) {
+      await fetchItemImage(itemData[i]);
+    }
+  }
 
   return (
-    <div className="w-full">
-      <h1 className="text-4xl text-center text-white mt-5" data={companyName}> </h1>
-      <Separator className="mt-3 h-1"/>
-          <div className="col-span-1">
-            <Suspense fallback={<Loading />}>
-              <ItemCard data={itemData} />
-            </Suspense>
-          </div>
-      </div>
+    <ScrollArea className="h-screen">
+      <ItemCard data={itemData} />
+    </ScrollArea>
   );
 }

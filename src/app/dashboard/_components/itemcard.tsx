@@ -3,39 +3,36 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { getToken } from "@/app/actions";
-import { Button } from "@/components/ui/button";
+import { itemTypeImage } from "@/lib/types";
 
-import { itemType } from "@/app/types";
-
-export default function ItemCard({ data }: { data: itemType[]}) {
-  const [itemtypes, setItemtype] = useState<itemType[]>([]);
+export default function ItemCard({ data }: { data: itemTypeImage[]}) {
+  const [itemtypes, setItemtype] = useState<itemTypeImage[]>([]);
   useEffect(() => {
     setItemtype(data);
   }, [data]);
 
   return (
-    <div className="mt-20 grid grid-cols-3 gap-2 p-8">
-        {itemtypes?.map((itemtype) => (
-          <div
-            key={itemtype.id}
-            className="group cursor-pointer sm:hover:shadow-slate-400 bg-gray-900 sm:shadow-md rounded-lg sm:m-2 transition-shadow duration-200"
-          >
-            <Link href={`/dashboard/item/${itemtype.id}`}>
-              {/* <Image
-                src={`${process.env.NEXT_PUBLIC_API_URL}/itemType${itemtype.imageId}`}
-                width={500}
-                height={300}
-                className="sm:rounded-t-lg group-hover:opacity-70 transition duration-200 ease-in"
-                alt={itemtype.name}
-              ></Image> */}
-              <div className="p-2">
-                <h2 className="text-lg text-white font-bold truncate">{itemtype.name}</h2>
-                <p className="line-clamp-2 text-white text-md">{itemtype.price} ISK.</p>
-              </div>
-            </Link>
-          </div>
-        ))}
+    <div className="grid grid-cols-5">
+      {itemtypes?.map((itemtype) => (
+        <div
+          key={itemtype.id}
+          className="group cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200 h-96 "
+        >
+          <Link href={`/dashboard/item/${itemtype.id}`} className="flex flex-col justify-end h-full">
+            <Image
+              src={itemtype?.imageUrl ?? '/logo.svg'}
+              width={500}
+              height={300}
+              className="sm:rounded-t-lg h-5/6 object-cover group-hover:opacity-70 scale-90 group-hover:scale-95 transition duration-200 ease-in"
+              alt={itemtype.name}
+            ></Image>
+            <div className="p-2">
+              <h2 className="text-lg font-bold truncate">{itemtype.name}</h2>
+              <p className="line-clamp-2 text-md">{`${itemtype.price} kr`}</p>
+            </div>
+          </Link>
+        </div>
+      ))}
     </div>
   );
 }
