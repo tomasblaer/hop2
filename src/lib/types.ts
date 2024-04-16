@@ -10,7 +10,7 @@ export type saleDetail = {
 };
 
 export type itemType = {
-  id: number;
+  id: string;
   name: string;
   price: number;
   imageId: string;
