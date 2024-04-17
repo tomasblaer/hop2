@@ -5,6 +5,7 @@ import { siteConfig } from "../../config/site";
 import Header from "@/components/nav/header";
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from "@/components/footer/footer";
+import { ViewTransitions } from "next-view-transitions";
 
 const inter = Inter({ subsets: ["latin"] });
 

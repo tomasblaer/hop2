@@ -38,7 +38,6 @@ export default async function Dashboard() {
 
   return (
     <div className="w-full">
-      <h1 className="text-4xl text-center text-white mt-5" data={companyName}> </h1>
       <Separator className="mt-3 h-1"/>
           <div className="col-span-1">
             <Suspense fallback={<Loading />}>

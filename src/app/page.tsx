@@ -48,7 +48,7 @@ export default function Home() {
                 textFont.className
               )}
             >
-              Eina leiðin til að halda utan um lagerinn. Varningur hjálpar þér að halda utan um birgðarstöðuna, sölurnar og viðskpitin.
+              Eina leiðin til að halda utan um lagerinn. Varningur hjálpar þér að halda utan um birgðarstöðuna, sölurnar og viðskiptin.
             </div>
             <Button className="hover:opacity-85 hover:scale-110 transition duration-300 mt-6 bg-gradient-to-r from-red-900 to-rose-700" size="lg" asChild>
               <Link href="/sign-up">Prófa núna!</Link>
