@@ -5,7 +5,8 @@ import { SaleIcon } from "@/components/icons/saleicon";
 import { Analytics } from "@/components/icons/analytics";
 import { Separator } from "@/components/ui/separator";
 import { SignOut } from "@/components/icons/signout";
-import { getToken } from "@/app/actions";
+import { getToken, removeToken } from "@/app/actions";
+import LogoutButton from "./logout-button";
 
 async function getCompanyName() {
   const token = await getToken();
@@ -31,7 +32,7 @@ export default async function SidePanel() {
             <h2 className="mb-4 px-5 text-2xl text-slate-100 font-extrabold">
               {companyName}
             </h2>
-            <Separator className="h-1 bg-gradient-to-r from-red-900 to-rose-700"/>
+            <Separator className="h-1 bg-gradient-to-r from-red-900 to-rose-700" />
             <div className="space-y-1 mt-3">
               <Button
                 asChild
@@ -69,18 +70,9 @@ export default async function SidePanel() {
             </div>
           </div>
         </div>
-        <Separator className="h-1 bg-gradient-to-r from-red-900 to-rose-700"/>
+        <Separator className="h-1 bg-gradient-to-r from-red-900 to-rose-700" />
       </div>
-        <Button
-          asChild
-          size="sm"
-          className="ml-2 gap-1 bottom-2 overflow-hidden fixed h-10 text-white font-semibold"
-        >
-          <Link href="/">
-            <SignOut/>
-            Útskráning
-          </Link>
-        </Button>
+      <LogoutButton />
     </>
   );
 }

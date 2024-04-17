@@ -113,7 +113,7 @@ export default function ItemTypeCard({
         src={data?.imageUrl ?? '/logo.svg'}
         width={500}
         height={300}
-        className="sm:rounded-t-lg h-96 w-auto mx-auto object-scale-down scale-90 hover:scale-95 transition duration-200 ease-in"
+        className="sm:rounded-t-lg h-[370px] w-auto mx-auto object-scale-down scale-90 hover:scale-95 transition duration-200 ease-in"
         alt={data.name}
       ></Image>
       <div className="flex justify-between">

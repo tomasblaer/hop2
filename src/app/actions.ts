@@ -12,3 +12,7 @@ export async function setToken(token: string) {
 export async function getToken() {
   return cookies().get('accessToken')
 }
+
+export async function removeToken() {
+  cookies().delete('accessToken')
+}

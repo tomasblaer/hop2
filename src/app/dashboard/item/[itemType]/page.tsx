@@ -94,16 +94,14 @@ export default async function ItemTypePage({
     await fetchItemImage(data);
   }
   const items = await fetchItemsInType(data.id);
-  console.log(items);
-
 
   return (
-    <div className="flex flex-col w-full justify-between bg-slate-100">
+    <div className="flex flex-col w-full h-full justify-between bg-slate-100">
       <ItemPanel showButton={false} />
-      <div className="p-4 w-full grid grid-cols-3 flex-1">
+      <div className="p-4 w-full grid grid-cols-3 gap-2 flex-1">
         <ItemTypeCard data={data} updateItemTypeFunction={updateItemType} deleteItemTypeFunction={deleteItemType} />
         <div className="col-start-2 col-span-2">
-          <ItemTable columns={columns} data={items} />
+          <ItemTable columns={columns} data={items} itemTypeId={params.itemType} />
         </div>
       </div>
     </div>
