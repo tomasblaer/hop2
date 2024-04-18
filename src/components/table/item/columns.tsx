@@ -2,7 +2,7 @@
 import { item } from "@/lib/types";
 import { ColumnDef } from "@tanstack/react-table";
 import Link from "next/link";
-import { Checkbox } from "../ui/checkbox";
+import { Checkbox } from "../../ui/checkbox";
 
 export const columns: ColumnDef<item>[] = [
   {
@@ -53,9 +53,9 @@ export const columns: ColumnDef<item>[] = [
     accessorKey: "saleId",
     header: "Staða",
     cell: ({ row }) => {
-      const status = row.getValue("saleId");
-      if (status) {
-        return <Link href={`#`}>Seld</Link>;
+      const saleId = row.getValue("saleId");
+      if (saleId) {
+        return <Link href={`/dashboard/sale/${saleId}`} className="font-semibold hover:font-bold ease-in duration-150">Seld</Link>;
       }
       return "Óseld";
     },

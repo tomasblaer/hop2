@@ -3,8 +3,8 @@ import { getToken } from "@/app/actions";
 import ItemTypeCard from "../../../../components/forms/itemtype-edit-card";
 import { item, itemTypeImage, itemTypeUpdate } from "@/lib/types";
 import ItemPanel from "@/components/dashboard/item-panel";
-import ItemTable from "@/components/table/item-table";
-import { columns } from "@/components/table/columns";
+import ItemTable from "@/components/table/item/item-table";
+import { columns } from "@/components/table/item/columns";
 import { Ban, Bot } from "lucide-react";
 
 async function fetchItemTypeInfo(itemTypeId: string): Promise<itemTypeImage> {

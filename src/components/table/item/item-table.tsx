@@ -15,13 +15,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { useCallback, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, DollarSign, Trash2 } from "lucide-react";
-import AddItemDialog from "../forms/item-add-dialog";
-import { useToast } from "../ui/use-toast";
+
+import { useToast } from "../../ui/use-toast";
 import { getToken, revalidatePathAction } from "@/app/actions";
 import { revalidatePath } from "next/cache";
+import AddItemDialog from "@/components/forms/item-add-dialog";
 
 type ItemTableProps = {
   columns: ColumnDef<item>[];
@@ -115,6 +116,8 @@ export default function ItemTable({
     sellItems(ids);
     table.toggleAllRowsSelected(false);
     revalidatePathAction(`/dashboard/item/${itemTypeId}`);
+    revalidatePathAction(`/dashboard/sales`);
+
   }, [itemTypeId, sellItems, table, toast]);
 
   const unsoldItems = useMemo(() => table.getRowModel().rows.filter((row) => !row.original.saleId).length, [table]);
@@ -175,7 +178,6 @@ export default function ItemTable({
       </div>
       <div className="flex items-center justify-end space-x-2 py-2">
         <div className="grid grid-cols-4 mr-auto text-sm gap-x-2 ">
-          {/* <EditItemDialog id={table.getFilteredSelectedRowModel} /> */}
           <AddItemDialog id={itemTypeId} />
           <Button
             variant="outline"

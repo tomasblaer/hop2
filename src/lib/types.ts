@@ -41,4 +41,12 @@ export type item = {
   companyId: number;
   saleId: string | null;
   itemTypeId: string;
+  itemType: itemType;
+}
+
+export type sale = {
+  companyId: number;
+  id: string;
+  saleAt: string;
+  createdAt: string;
 }

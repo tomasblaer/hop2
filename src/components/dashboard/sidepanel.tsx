@@ -26,10 +26,10 @@ export default async function SidePanel() {
 
   return (
     <>
-      <div className="pb-12 h- bg-gradient-to-r from-red-700 to-rose-500">
+      <div className="pb-12 w-[195px] bg-gradient-to-r from-red-700 to-rose-500">
         <div className="space-y-4 pt-4 pb-2">
           <div className="py-2">
-            <h2 className="mb-4 text-nowrap px-5 text-2xl text-slate-100 font-extrabold">
+            <h2 className="mb-4 select-none overflow-hidden text-ellipsis block px-5 text-2xl text-slate-100 font-extrabold">
               {companyName}
             </h2>
             <Separator className="h-1 bg-gradient-to-r from-red-900 to-rose-700" />
