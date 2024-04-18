@@ -25,7 +25,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
-import { getToken } from "@/app/actions";
+import { getToken, revalidatePathAction } from "@/app/actions";
 
 const formSchema = z.object({
   name: z.string().min(3, {
@@ -89,7 +89,6 @@ export default function ItemTypeCard({
       }
       updateItemTypeFunction(data.id, { name: values.name, price: values.price });
       if (values.image) {
-        console.log(values.image);
         updateItemTypeImage(data.id, values.image);
       }
       setEditDialogOpen(false);
@@ -101,6 +100,7 @@ export default function ItemTypeCard({
   const onDelete = useCallback((id: string) => {
     deleteItemTypeFunction(id);
     setEditDialogOpen(false);
+    revalidatePathAction('/dashboard');
     router.push('/dashboard');
   }, [deleteItemTypeFunction, router]);
 

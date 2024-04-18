@@ -5,6 +5,7 @@ import { item, itemTypeImage, itemTypeUpdate } from "@/lib/types";
 import ItemPanel from "@/components/dashboard/item-panel";
 import ItemTable from "@/components/table/item-table";
 import { columns } from "@/components/table/columns";
+import { Ban, Bot } from "lucide-react";
 
 async function fetchItemTypeInfo(itemTypeId: string): Promise<itemTypeImage> {
   const token = await getToken();
@@ -94,6 +95,20 @@ export default async function ItemTypePage({
     await fetchItemImage(data);
   }
   const items = await fetchItemsInType(data.id);
+
+  if (Object.prototype.hasOwnProperty.call(data, "message")) {
+    return (
+    <div className="flex flex-col w-full h-full justify-between bg-slate-100">
+      <ItemPanel showButton={false} />
+      <div className="w-full h-full flex flex-col">
+        <div className="text-5xl font-semibold text-gray-400 select-none mx-auto flex">
+          <Bot size={64} className="mx-2"/>
+          <span className="mt-auto">Hey! þessi vörutegund er ekki til</span>
+        </div>
+      </div>;
+    </div>
+    )
+  }
 
   return (
     <div className="flex flex-col w-full h-full justify-between bg-slate-100">

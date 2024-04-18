@@ -29,7 +29,6 @@ export default function CompanyRegistry() {
     }
     setPassword(data.admin.password);
     setName(data.admin.username);
-    console.log(data);
   };
 
   return (

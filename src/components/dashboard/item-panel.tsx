@@ -21,7 +21,7 @@ import { useCallback, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { getToken } from "@/app/actions";
+import { getToken, revalidatePathAction } from "@/app/actions";
 
 const formSchema = z.object({
   name: z
@@ -79,6 +79,7 @@ export default function ItemPanel({ showButton }: { showButton: boolean }) {
       const image = await res.json();
       Object.assign(status, image);
     }
+    revalidatePathAction(`/dashboard`);
     setEditDialogOpen(false);
   }, []);
 

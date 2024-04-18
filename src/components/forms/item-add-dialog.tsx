@@ -13,12 +13,12 @@ import { Input } from "../ui/input";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
-import { getToken } from "@/app/actions";
+import { getToken, revalidatePathAction } from "@/app/actions";
 
 const formSchema = z.object({
-  location: z.string(),
+  location: z.any(),
   comment: z.any(),
 });
 
@@ -26,6 +26,7 @@ export default function AddItemDialog({ id }: { id: string }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
+  const [open, setOpen] = useState(false);
 
   const onSubmit = useCallback(async (values: z.infer<typeof formSchema>) => {
     const token = await getToken();
@@ -38,16 +39,18 @@ export default function AddItemDialog({ id }: { id: string }) {
       body: JSON.stringify(values),
     });
     const data = await res.json();
-    console.log(data);
+    setOpen(false);
+    revalidatePathAction(`/dashboard/item/${id}`);
   }, [id]);
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
           size="sm"
-          className="bg-green-300 hover:bg-green-200"
+          title="Bæta við vöru"
+          onClick={() => setOpen(true)}
         >
           <Plus />
         </Button>

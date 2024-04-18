@@ -45,7 +45,7 @@ export default async function Dashboard() {
   return (
     <div className="flex flex-col justify-between w-full">
       <ItemPanel showButton={true}/>
-      <ScrollArea className="h-5/6 flex-1">
+      <ScrollArea className="h-5/6 flex-1 bg-slate-100">
         <ItemCard data={itemData} />
       </ScrollArea>
     </div>
