@@ -1,6 +1,8 @@
 #  Varningur 📦
 ## Vefforritun 2 2024, hópverkefni 2
 
+Verkefnið er hýst á vercel [hér](https://hop2.vercel.app/)
+
 [Mikael Matthíasson](https://github.com/mikkimatt) - mim23@hi.is     
 [Mikael Máni Sveinsson](https://github.com/mikaelmanis) - mms27@hi.is     
 [Tómas Blær Guðmundsson](https://github.com/tomasblaer) - tbg16@hi.is   
