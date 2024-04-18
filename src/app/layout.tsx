@@ -5,7 +5,7 @@ import { siteConfig } from "../../config/site";
 import Header from "@/components/nav/header";
 import { Toaster } from "@/components/ui/toaster";
 import { Footer } from "@/components/footer/footer";
-import { ViewTransitions } from "next-view-transitions";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={cn(inter.className, 'h-full')}>
         {children}
         <Toaster />
       </body>

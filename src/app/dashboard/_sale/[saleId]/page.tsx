@@ -1,6 +1,7 @@
 'use client'
 
 import { getToken } from "@/app/actions";
+import ItemPanel from "@/components/dashboard/item-panel";
 import { saleDetail } from "@/lib/types";
 import { useEffect, useState } from "react"
 
@@ -23,14 +24,13 @@ export default function SalePage({ params }: { params: { saleId: string } }) {
       setItemsInSale(data);
     }
     fetchSale();
-  }, [params.saleId]);
+  }, [itemsInSale, params.saleId]);
 
   return (
-    <main className="flex w-screen h-screen justify-center flex-col">
-      <h1>Sale</h1>
-      <div>
-      </div>
-    </main>
+    <div className="flex flex-col w-full h-full justify-between bg-slate-100">
+      <ItemPanel showButton={false} />
+      <h1 className="h-full">Sala</h1>
+    </div>
   )
 
 }
