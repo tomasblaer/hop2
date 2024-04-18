@@ -15,7 +15,7 @@ export default function SaleCards({ data }: SaleCardProps) {
     <>
       <ItemPanel showButton={false} />
       <ScrollArea className="h-5/6 flex-1 bg-slate-100">
-        <div className="grid grid-cols-4 gap-2 p-2">
+        <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-1 gap-2 p-2">
           {data.map((sale: any, index: number) => (
             <Link key={index} href={`/dashboard/sale/${sale.id}`}>
               <Button

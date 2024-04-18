@@ -12,7 +12,7 @@ export default function ItemCard({ data }: { data: itemTypeImage[]}) {
   }, [data]);
 
   return (
-    <div className="grid h-full grid-cols-5 bg-slate-100">
+    <div className="grid h-full grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 bg-slate-100">
       {itemtypes?.map((itemtype) => (
         <div
           key={itemtype.id}

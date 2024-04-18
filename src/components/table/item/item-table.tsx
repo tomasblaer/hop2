@@ -125,7 +125,7 @@ export default function ItemTable({
   const totalItems = useMemo(() => table.getRowModel().rows.length, [table]);
 
   return (
-    <div>
+    <div className="">
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -176,7 +176,7 @@ export default function ItemTable({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-2">
+      <div className="flex items-center justify-end space-x-2 py-2 mb-8">
         <div className="grid grid-cols-4 mr-auto text-sm gap-x-2 ">
           <AddItemDialog id={itemTypeId} />
           <Button

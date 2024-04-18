@@ -91,10 +91,10 @@ export default function ItemTypeCard({
       if (values.image) {
         updateItemTypeImage(data.id, values.image);
       }
+      revalidatePathAction(`/dashboard/item/${data.id}`);
       setEditDialogOpen(false);
-      router.refresh();
     },
-    [data.id, data.name, data.price, router, updateItemTypeFunction, updateItemTypeImage]
+    [data, updateItemTypeFunction, updateItemTypeImage]
   );
 
   const onDelete = useCallback((id: string) => {
@@ -117,8 +117,8 @@ export default function ItemTypeCard({
         alt={data.name}
       ></Image>
       <div className="flex justify-between">
-        <div className="p-2">
-          <h2 className="text-lg font-bold truncate">{data.name}</h2>
+        <div className="p-2 md:w-full w-1/2">
+          <h2 className="text-lg font-bold truncate w-full">{data.name}</h2>
           <span className="line-clamp-2 text-md">{`${data.price} kr`}</span>
         </div>
         <Button

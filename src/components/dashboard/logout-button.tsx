@@ -19,7 +19,7 @@ export default function LogoutButton() {
     <Button
       asChild
       size="sm"
-      className="ml-2 gap-1 bottom-2 overflow-hidden fixed h-10 text-white font-semibold"
+      className="ml-2 gap-1 lg:bottom-2 mt-2 lg:mt-0 overflow-hidden lg:fixed h-10 text-white font-semibold"
       onClick={handleLogout}
     >
       <Link href="/">

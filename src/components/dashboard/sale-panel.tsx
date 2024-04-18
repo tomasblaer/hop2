@@ -14,8 +14,8 @@ export default function SaleInfoPage({
   saleData,
 }: SaleInfoPageProps) {
   return (
-    <div className="grid grid-cols-3 gap-2 p-4">
-      <div className="cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 transition-shadow duration-200 h-fit w-full bg-slate-50">
+    <div className="grid lg:grid-cols-3 grid-cols-2 gap-2 p-4">
+      <div className="col-span-3 lg:col-span-1 cursor-pointer sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 transition-shadow duration-200 h-fit w-full bg-slate-50">
         <Image
           src={"/bill.svg"}
           width={500}

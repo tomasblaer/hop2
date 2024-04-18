@@ -22,6 +22,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { getToken, revalidatePathAction } from "@/app/actions";
+import LogoutButton from "./logout-button";
 
 const formSchema = z.object({
   name: z
@@ -86,6 +87,9 @@ export default function ItemPanel({ showButton }: { showButton: boolean }) {
   return (
     <>
       <div className="flex justify-end pt-2 pb-2 bg-gradient-to-r from-rose-500 to-red-700 min-h-[72px]">
+        <div className="block lg:hidden z-50 h-full w-full mb-auto">
+          <LogoutButton />
+        </div>
         {showButton && (
           <Button
             variant="destructive"
